@@ -143,7 +143,7 @@ public class PlatoDayForm extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, true, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -393,7 +393,7 @@ public class PlatoDayForm extends javax.swing.JFrame {
         tablaplato.addRow(menudia);
         MenuDayForm.jTableMenuDia.setModel(tablaplato);
         
-          dispose();
+          this.dispose();
 
     }//GEN-LAST:event_btnAceptarMouseClicked
 

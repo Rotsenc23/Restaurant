@@ -5,8 +5,7 @@
  */
 package src.main.java.restaurant.form;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -29,7 +28,7 @@ public class MenuDayForm extends javax.swing.JFrame {
         initComponents();
     
         
-        
+                
         setTitle("RESTAURANTE NESTOR");
           setLayout(null);
         setSize(650, 500);
@@ -58,9 +57,9 @@ public class MenuDayForm extends javax.swing.JFrame {
         jLFecha = new javax.swing.JLabel();
         jTextDescrip = new javax.swing.JTextField();
         btnAgrePlato = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMenuDia = new javax.swing.JTable();
-        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,23 +103,22 @@ public class MenuDayForm extends javax.swing.JFrame {
             }
         });
 
-        jTableMenuDia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jTableMenuDia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane1.setViewportView(jTableMenuDia);
-
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
+
+        jTableMenuDia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NOMBRE", "CATEGORIA", "PRECIO", "TIEMPO DE ESPERA", "RECETA"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableMenuDia);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,7 +145,6 @@ public class MenuDayForm extends javax.swing.JFrame {
                             .addComponent(jTextDescrip)
                             .addComponent(jLIngresoDescrip))
                         .addGap(31, 31, 31))))
-            .addComponent(jScrollPane1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(162, 162, 162)
                 .addComponent(btnAgrePlato)
@@ -160,6 +157,10 @@ public class MenuDayForm extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(btnVolver)
                 .addGap(140, 140, 140))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +180,9 @@ public class MenuDayForm extends javax.swing.JFrame {
                     .addComponent(jTextDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnAgrePlato)
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnVolver)
@@ -261,25 +262,16 @@ public class MenuDayForm extends javax.swing.JFrame {
      
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void ocultarFecha(){
-        btnMostraFecha.setEnabled(false);
-    }
-    
-    private void mostrarFecha(){
-        btnMostraFecha.setEnabled(true);
-    }
+   
     private void btnMostraFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostraFechaActionPerformed
        
-    
-        
-         String dia = Integer.toString(jDateChooserFecha.getCalendar().get(Calendar.DAY_OF_MONTH));
+        String dia = Integer.toString(jDateChooserFecha.getCalendar().get(Calendar.DAY_OF_MONTH));
         String mes = Integer.toString(jDateChooserFecha.getCalendar().get(Calendar.MONTH));
         String year = Integer.toString(jDateChooserFecha.getCalendar().get(Calendar.YEAR));
         String fecha = (year + "-" + mes + "-" + dia);
         jLFecha.setText(fecha); 
-             
-        mostrarFecha();
-        
+     
+     
     }//GEN-LAST:event_btnMostraFechaActionPerformed
 
     private void jTextDescripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDescripActionPerformed
