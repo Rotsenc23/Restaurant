@@ -1,6 +1,7 @@
 package src.main.java.restaurant.bo;
 
 import java.util.List;
+import javax.swing.JTable;
 import src.main.java.restaurant.db.CategoriaDAO;
 import src.main.java.restaurant.db.MenuDAO;
 import src.main.java.restaurant.db.PlatoDAO;
@@ -16,7 +17,7 @@ public class MenuDayBO {
         
         if (action == ActionType.save && menuPlatoList != null) {
             for (MenuPlatoDTO menuPlato : menuPlatoList) {
-
+                
                 System.out.println("GUARDANDO MENU .....");
                 menuDao.saveMenu(menuPlato.getFechaMenu(), menuPlato.getDescripcionMenu(), menuPlato.getPrecio(), menuPlato.getTiempoEspera());
 
@@ -26,7 +27,10 @@ public class MenuDayBO {
                 System.out.println("GUARDANDO CATEGORIA..... PLATO-ID " + platoDao.getMaxPlatoId());
                 categotiaDao.saveCategoria(menuPlato.getCategoria(), platoDao.getMaxPlatoId());
             }
-
-        }
+        }  
+    }  
+    public void getMenu(JTable table,String date){
+          new MenuDAO().getMenu(table, date);
     }
+    
 }
