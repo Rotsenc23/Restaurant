@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -60,4 +62,40 @@ public void saveMenu(String date, String description, Double precio, Integer tie
         return menuId;
 
     }
+    
+    public void getMenu(JTable table,String date) {
+
+        Connection con = MyConnection.getConnection();
+        PreparedStatement ps;
+        try {
+
+            String query = "select m.FECHA, m.DESCRIPCION, m.PRECIO,m.TIEMPO_ESPERA,p.NOMBRE,p.RECETA,c.DESCRIPCION "
+                    + " from menu m inner join plato p on m.id = p.menu_id inner join categoria c on p.id  = c.plato_id"
+                    + " where m.fecha = ?";
+
+            ps = con.prepareStatement(query);
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            ps.setDate(1, java.sql.Date.valueOf(date));
+
+            ResultSet rs = ps.executeQuery();
+
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[6];
+                row[0] = rs.getDate(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getDouble(3);
+                row[3] = rs.getInt(4);
+                row[4] = rs.getString(5);
+                row[5] = rs.getString(6);
+               model.addRow(row);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+    
 }

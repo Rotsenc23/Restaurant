@@ -10,5 +10,5 @@ package src.main.java.restaurant.bo;
  * @author rotse
  */
 public enum ActionType {
-    save,update,delete
+    save,get,update,delete
 }

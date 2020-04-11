@@ -6,6 +6,7 @@
 package src.main.java.restaurant.form;
 
 import java.util.Calendar;
+import src.main.java.restaurant.bo.MenuDayBO;
 
 /**
  *
@@ -123,15 +124,12 @@ public class MenuFinal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultarFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarFechaActionPerformed
-
         String dia = Integer.toString(jDateChooserFecha.getCalendar().get(Calendar.DAY_OF_MONTH));
         String mes = Integer.toString(jDateChooserFecha.getCalendar().get(Calendar.MONTH));
         String year = Integer.toString(jDateChooserFecha.getCalendar().get(Calendar.YEAR));
         String fecha = (year + "-" + mes + "-" + dia);
-        jLConsultaFecha.setText(fecha);
-
-        
-
+       new MenuDayBO().getMenu(jTableModificarMenuDia, fecha );
+       
     }//GEN-LAST:event_btnConsultarFechaActionPerformed
 
     /**
