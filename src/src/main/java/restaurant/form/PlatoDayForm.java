@@ -18,7 +18,7 @@ public class PlatoDayForm extends javax.swing.JFrame {
         tablePlatos.addColumn("TIEMPO DE ESPERA");
         tablePlatos.addColumn("RECETA");
 
-        jTablePlatosDia.setModel(tablePlatos);
+       
 
         setTitle("Restaurante Nestor");
         setLayout(null);
@@ -45,9 +45,6 @@ public class PlatoDayForm extends javax.swing.JFrame {
         jTextPrecio = new javax.swing.JTextField();
         jTextTiemp = new javax.swing.JTextField();
         jTextDescPlato = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTablePlatosDia = new javax.swing.JTable();
-        btnAgregarPlato = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
 
         jMenuItem1.setText("Enviar");
@@ -128,51 +125,6 @@ public class PlatoDayForm extends javax.swing.JFrame {
             }
         });
 
-        jTablePlatosDia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "PLATO", "CATEGORIA", "PRECIO", "TIEMPO DE ESPERA", "RECETA"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, true, false, true, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTablePlatosDia.setComponentPopupMenu(jPopupMenu2);
-        jTablePlatosDia.getTableHeader().setResizingAllowed(false);
-        jTablePlatosDia.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTablePlatosDia);
-        if (jTablePlatosDia.getColumnModel().getColumnCount() > 0) {
-            jTablePlatosDia.getColumnModel().getColumn(0).setResizable(false);
-            jTablePlatosDia.getColumnModel().getColumn(1).setResizable(false);
-            jTablePlatosDia.getColumnModel().getColumn(2).setResizable(false);
-            jTablePlatosDia.getColumnModel().getColumn(3).setResizable(false);
-            jTablePlatosDia.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        btnAgregarPlato.setText("AGREGAR PLATO");
-        btnAgregarPlato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarPlatoActionPerformed(evt);
-            }
-        });
-
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,17 +145,14 @@ public class PlatoDayForm extends javax.swing.JFrame {
                 .addComponent(bntVolver)
                 .addGap(94, 94, 94))
             .addGroup(jPanelPlatoLayout.createSequentialGroup()
-                .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(123, 123, 123)
+                .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelPlatoLayout.createSequentialGroup()
-                        .addContainerGap(16, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextTiemp))
                     .addGroup(jPanelPlatoLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelPlatoLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextTiemp))
+                        .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelPlatoLayout.createSequentialGroup()
                                 .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -217,10 +166,9 @@ public class PlatoDayForm extends javax.swing.JFrame {
                             .addGroup(jPanelPlatoLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(35, 35, 35)
-                                .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAgregarPlato)
-                                    .addComponent(jTextReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(28, 28, 28))
+                                .addComponent(jTextReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(19, 19, 19)))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         jPanelPlatoLayout.setVerticalGroup(
             jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,11 +193,7 @@ public class PlatoDayForm extends javax.swing.JFrame {
                 .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(btnAgregarPlato)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(179, 179, 179)
                 .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(bntVolver)
@@ -322,37 +266,10 @@ public class PlatoDayForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextDescPlatoKeyTyped
 
 
-    private void btnAgregarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPlatoActionPerformed
-
-       
-       
-        String[] plato = new String[5];
-        plato[0] = jTextDescPlato.getText();
-        plato[1] = jCBCategoria.getSelectedItem().toString();
-        plato[2] = jTextPrecio.getText();
-        plato[3] = jTextTiemp.getText();
-        plato[4] = jTextReceta.getText();
-        
-        
-         for(int i = 20; i<jTablePlatosDia.getRowCount();i++){
-            tablePlatos.removeRow(i);
-            i-=1;
-        }   
-        
-         jTextDescPlato.setText("");
-        jCBCategoria.setSelectedItem(ABORT);
-        jTextPrecio.setText("");
-        jTextTiemp.setText("");
-        jTextReceta.setText("");
-        tablePlatos.addRow(plato);
-
-
-    }//GEN-LAST:event_btnAgregarPlatoActionPerformed
-
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
 
         //ELIMINAR DATOS EN TABLA
-        this.tablePlatos.removeRow(this.jTablePlatosDia.getSelectedRow());
+        
 
         jTextDescPlato.setText("");
         jCBCategoria.setSelectedItem(ABORT);
@@ -368,28 +285,19 @@ public class PlatoDayForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextPrecioActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        DefaultTableModel tablaplato = (DefaultTableModel) MenuDayForm.jTableMenuDia.getModel();
-        int filasele = jTablePlatosDia.getSelectedRow();
-        String[] menudia = new String[5];
-        menudia[0] = jTablePlatosDia.getValueAt(filasele, 0).toString();
-        menudia[1] = jTablePlatosDia.getValueAt(filasele, 1).toString();
-        menudia[2] = jTablePlatosDia.getValueAt(filasele, 2).toString();
-        menudia[3] = jTablePlatosDia.getValueAt(filasele, 3).toString();
-        menudia[4] = jTablePlatosDia.getValueAt(filasele, 4).toString();
-        tablaplato.addRow(menudia);
-        MenuDayForm.jTableMenuDia.setModel(tablaplato);
+       
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
 
         DefaultTableModel tablaplato = (DefaultTableModel) MenuDayForm.jTableMenuDia.getModel();
-        int filasele = jTablePlatosDia.getSelectedRow();
+        
         String[] menudia = new String[5];
-        menudia[0] = jTablePlatosDia.getValueAt(filasele, 0).toString();
-        menudia[1] = jTablePlatosDia.getValueAt(filasele, 1).toString();
-        menudia[2] = jTablePlatosDia.getValueAt(filasele, 2).toString();
-        menudia[3] = jTablePlatosDia.getValueAt(filasele, 3).toString();
-        menudia[4] = jTablePlatosDia.getValueAt(filasele, 4).toString();
+        menudia[0] = jTextDescPlato.getText();
+        menudia[1] = jCBCategoria.getSelectedItem().toString();
+        menudia[2] = jTextPrecio.getText();
+        menudia[3] = jTextReceta.getText();
+        menudia[4] = jTextTiemp.getText();
         tablaplato.addRow(menudia);
         MenuDayForm.jTableMenuDia.setModel(tablaplato);
         
@@ -409,7 +317,6 @@ public class PlatoDayForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntVolver;
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnAgregarPlato;
     private javax.swing.JButton btnDelete;
     private javax.swing.JComboBox<String> jCBCategoria;
     private javax.swing.JLabel jLPlato;
@@ -420,8 +327,6 @@ public class PlatoDayForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanelPlato;
     private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTablePlatosDia;
     private javax.swing.JTextField jTextDescPlato;
     private javax.swing.JTextField jTextPrecio;
     private javax.swing.JTextField jTextReceta;
