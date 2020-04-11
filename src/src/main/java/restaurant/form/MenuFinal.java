@@ -126,6 +126,7 @@ public class MenuFinal extends javax.swing.JFrame {
         String fecha = (year + "-" + mes + "-" + dia);
         jLConsultaFecha.setText(fecha);
 
+        
 
     }//GEN-LAST:event_btnConsultarFechaActionPerformed
 

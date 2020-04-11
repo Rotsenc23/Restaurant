@@ -254,11 +254,11 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="4">
-                    <Column editable="false" title="PLATO" type="java.lang.String"/>
-                    <Column editable="false" title="CATEGORIA" type="java.lang.String"/>
+                    <Column editable="true" title="PLATO" type="java.lang.String"/>
+                    <Column editable="true" title="CATEGORIA" type="java.lang.String"/>
                     <Column editable="false" title="PRECIO" type="java.lang.Float"/>
-                    <Column editable="false" title="TIEMPO DE ESPERA" type="java.lang.Integer"/>
-                    <Column editable="false" title="RECETA" type="java.lang.String"/>
+                    <Column editable="true" title="TIEMPO DE ESPERA" type="java.lang.Integer"/>
+                    <Column editable="true" title="RECETA" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
