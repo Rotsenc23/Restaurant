@@ -39,13 +39,12 @@ public class PlatoDayForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
-        bntVolver = new javax.swing.JButton();
+        bntCancel = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextReceta = new javax.swing.JTextField();
         jTextPrecio = new javax.swing.JTextField();
         jTextTiemp = new javax.swing.JTextField();
         jTextDescPlato = new javax.swing.JTextField();
-        btnDelete = new javax.swing.JButton();
 
         jMenuItem1.setText("Enviar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,10 +87,10 @@ public class PlatoDayForm extends javax.swing.JFrame {
             }
         });
 
-        bntVolver.setText("VOLVER");
-        bntVolver.addActionListener(new java.awt.event.ActionListener() {
+        bntCancel.setText("CANCEL");
+        bntCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntVolverActionPerformed(evt);
+                bntCancelActionPerformed(evt);
             }
         });
 
@@ -125,25 +124,10 @@ public class PlatoDayForm extends javax.swing.JFrame {
             }
         });
 
-        btnDelete.setText("DELETE");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelPlatoLayout = new javax.swing.GroupLayout(jPanelPlato);
         jPanelPlato.setLayout(jPanelPlatoLayout);
         jPanelPlatoLayout.setHorizontalGroup(
             jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPlatoLayout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(btnAceptar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(bntVolver)
-                .addGap(94, 94, 94))
             .addGroup(jPanelPlatoLayout.createSequentialGroup()
                 .addGap(123, 123, 123)
                 .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -152,23 +136,29 @@ public class PlatoDayForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextTiemp))
                     .addGroup(jPanelPlatoLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPlatoLayout.createSequentialGroup()
                         .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLPlato)
+                            .addComponent(jLabel2))
+                        .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelPlatoLayout.createSequentialGroup()
-                                .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLPlato)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jCBCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextPrecio)
-                                    .addComponent(jTextDescPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelPlatoLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(35, 35, 35)
-                                .addComponent(jTextReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(19, 19, 19)))
+                                .addGap(36, 36, 36)
+                                .addComponent(jTextPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlatoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextDescPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jCBCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(172, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlatoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAceptar)
+                .addGap(64, 64, 64)
+                .addComponent(bntCancel)
+                .addGap(131, 131, 131))
         );
         jPanelPlatoLayout.setVerticalGroup(
             jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,16 +179,15 @@ public class PlatoDayForm extends javax.swing.JFrame {
                 .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextTiemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(179, 179, 179)
+                .addGap(59, 59, 59)
                 .addGroup(jPanelPlatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
-                    .addComponent(bntVolver)
-                    .addComponent(btnDelete))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(bntCancel))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,9 +224,12 @@ public class PlatoDayForm extends javax.swing.JFrame {
          */
 
     }//GEN-LAST:event_btnAceptarActionPerformed
-    private void bntVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntVolverActionPerformed
+    private void bntCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCancelActionPerformed
 
-    }//GEN-LAST:event_bntVolverActionPerformed
+        MainMenuForm principal = new MainMenuForm();
+        principal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bntCancelActionPerformed
 
     private void jTextPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPrecioKeyTyped
 
@@ -265,20 +257,6 @@ public class PlatoDayForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextDescPlatoKeyTyped
 
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-
-        //ELIMINAR DATOS EN TABLA
-        
-
-        jTextDescPlato.setText("");
-        jCBCategoria.setSelectedItem(ABORT);
-        jTextPrecio.setText("");
-        jTextReceta.setText("");
-        jTextTiemp.setText("");
-
-
-    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void jTextPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPrecioActionPerformed
         // TODO add your handling code here:
@@ -315,9 +293,8 @@ public class PlatoDayForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntVolver;
+    private javax.swing.JButton bntCancel;
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnDelete;
     private javax.swing.JComboBox<String> jCBCategoria;
     private javax.swing.JLabel jLPlato;
     private javax.swing.JLabel jLabel1;

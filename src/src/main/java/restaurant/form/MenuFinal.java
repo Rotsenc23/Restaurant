@@ -54,8 +54,18 @@ public class MenuFinal extends javax.swing.JFrame {
         });
 
         btnModificarMenu.setText("MODIFICAR");
+        btnModificarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarMenuActionPerformed(evt);
+            }
+        });
 
         btnDeleteMenu.setText("DELETE");
+        btnDeleteMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteMenuActionPerformed(evt);
+            }
+        });
 
         jTableModificarMenuDia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,6 +143,15 @@ public class MenuFinal extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_btnConsultarFechaActionPerformed
+
+    private void btnDeleteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMenuActionPerformed
+        this.jTableModificarMenuDia.remove(this.jTableModificarMenuDia);
+    }//GEN-LAST:event_btnDeleteMenuActionPerformed
+
+    private void btnModificarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMenuActionPerformed
+        
+       
+    }//GEN-LAST:event_btnModificarMenuActionPerformed
 
     /**
      * @param args the command line arguments

@@ -29,7 +29,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         btnAccept = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
-        jrbModificarMenu = new javax.swing.JRadioButton();
+        jrbConsultarMenu = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,8 +57,8 @@ public class MainMenuForm extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jrbModificarMenu);
-        jrbModificarMenu.setText("CONSULTAR MENU DEL DIA");
+        buttonGroup1.add(jrbConsultarMenu);
+        jrbConsultarMenu.setText("CONSULTAR MENU DEL DIA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,7 +71,7 @@ public class MainMenuForm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jrbAgregarMenu)
-                            .addComponent(jrbModificarMenu)))
+                            .addComponent(jrbConsultarMenu)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(169, 169, 169)
                         .addComponent(btnAccept)
@@ -87,7 +87,7 @@ public class MainMenuForm extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addComponent(jrbAgregarMenu)
                 .addGap(18, 18, 18)
-                .addComponent(jrbModificarMenu)
+                .addComponent(jrbConsultarMenu)
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAccept)
@@ -124,7 +124,12 @@ public class MainMenuForm extends javax.swing.JFrame {
             MenuDayForm menu = new MenuDayForm();
         menu.setVisible(true);
         dispose();
+        }
         
+        if(jrbConsultarMenu.isSelected()){
+            MenuFinal consultar = new MenuFinal();
+        consultar.setVisible(true);
+        dispose();
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
 
@@ -154,6 +159,6 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jrbAgregarMenu;
-    private javax.swing.JRadioButton jrbModificarMenu;
+    private javax.swing.JRadioButton jrbConsultarMenu;
     // End of variables declaration//GEN-END:variables
 }
