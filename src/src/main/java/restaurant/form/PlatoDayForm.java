@@ -274,8 +274,8 @@ public class PlatoDayForm extends javax.swing.JFrame {
         menudia[0] = jTextDescPlato.getText();
         menudia[1] = jCBCategoria.getSelectedItem().toString();
         menudia[2] = jTextPrecio.getText();
-        menudia[3] = jTextReceta.getText();
-        menudia[4] = jTextTiemp.getText();
+        menudia[3] = jTextTiemp.getText();
+        menudia[4] = jTextReceta.getText();
         tablaplato.addRow(menudia);
         MenuDayForm.jTableMenuDia.setModel(tablaplato);
         
