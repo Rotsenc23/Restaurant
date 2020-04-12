@@ -6,6 +6,7 @@
 package src.main.java.restaurant.bo;
 
 import java.util.List;
+import javax.swing.JTable;
 import src.main.java.restaurant.db.VentaDAO;
 import src.main.java.restaurant.dto.VentaDTO;
 
@@ -23,6 +24,10 @@ public class VentaBO {
                 }
           
         }     
+    }
+    //load sale table
+    public void getVentasOrderByTiempoEsperaPrecio(JTable table, String dateInit, String dateEnd){
+     new VentaDAO().getVentasOrderByTiempoEsperaMonto(table, dateInit, dateEnd);      
     }
    
 }
