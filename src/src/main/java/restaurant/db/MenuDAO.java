@@ -31,7 +31,7 @@ public void saveMenu(String date, String description, Double precio, Integer tie
             ps.setInt(4, tiempoEspera);
 
             if (ps.executeUpdate() > 0) {
-                System.out.println("Se guardo");
+                System.out.println("MENU GUARDADO");
             }
         } catch (SQLException ex) {
             System.out.println("FALLO " + ex);

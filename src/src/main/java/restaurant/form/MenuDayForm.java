@@ -208,16 +208,15 @@ public class MenuDayForm extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
-             DefaultTableModel tablaplato = (DefaultTableModel) MenuDayForm.jTableMenuDia.getModel();
+        DefaultTableModel tablaplato = (DefaultTableModel) MenuDayForm.jTableMenuDia.getModel();
+        
         List<MenuPlatoDTO> menuPlatoList = new ArrayList();
         for (int i = 0; i < tablaplato.getDataVector().size(); i++) {
-            Vector vector= (Vector) tablaplato.getDataVector().get(i);
+         Vector vector= (Vector) tablaplato.getDataVector().get(i);
          MenuPlatoDTO menuPlatoDTO =   menuPlatoDTO = new MenuPlatoDTO();
         
          menuPlatoDTO.setDescripcionMenu(jTextDescrip.getText());
-         menuPlatoDTO.setFechaMenu(jLFecha.getText());
-
-         
+         menuPlatoDTO.setFechaMenu(jLFecha.getText()); 
         for (int x = 0; x <= vector.size(); x++) {
             switch (x) {
                     case 0:
@@ -236,18 +235,14 @@ public class MenuDayForm extends javax.swing.JFrame {
                        menuPlatoDTO.setRecetaPlato((String) vector.elementAt(x));
                         break;
                     default:
-                    // code block
+          
                 }
             }
             menuPlatoList.add(menuPlatoDTO);
         }
  
-      
-        MenuDayBO menuDayBo = new MenuDayBO();
-       menuDayBo.actionMenu(ActionType.save, menuPlatoList);
-        
-         
-     
+       MenuDayBO menuDayBo = new MenuDayBO();
+       menuDayBo.saveMenu(menuPlatoList);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
    

@@ -9,26 +9,20 @@ import src.main.java.restaurant.dto.MenuPlatoDTO;
 
 public class MenuDayBO {
 
-    public void actionMenu(ActionType action, List<MenuPlatoDTO> menuPlatoList) {
-        
+    public void saveMenu( List<MenuPlatoDTO> menuPlatoList) {
         MenuDAO menuDao = new MenuDAO();
         PlatoDAO platoDao = new PlatoDAO();
-        CategoriaDAO categotiaDao = new CategoriaDAO();
-        
-        if (action == ActionType.save && menuPlatoList != null) {
+        if (menuPlatoList != null) {
             for (MenuPlatoDTO menuPlato : menuPlatoList) {
-                
-                System.out.println("GUARDANDO MENU .....");
+                System.out.println("GUARDANDO");
                 menuDao.saveMenu(menuPlato.getFechaMenu(), menuPlato.getDescripcionMenu(), menuPlato.getPrecio(), menuPlato.getTiempoEspera());
-
-                System.out.println("GUARDANDO PLATO..... MENU-ID " + menuDao.getMaxMenuId());
                 platoDao.savePlato(menuPlato.getNombrePlato(), menuPlato.getRecetaPlato(), menuDao.getMaxMenuId());
-
-                System.out.println("GUARDANDO CATEGORIA..... PLATO-ID " + platoDao.getMaxPlatoId());
-                categotiaDao.saveCategoria(menuPlato.getCategoria(), platoDao.getMaxPlatoId());
+                new CategoriaDAO().saveCategoria(menuPlato.getCategoria(), platoDao.getMaxPlatoId());  
+                System.out.println("GUARDADO OK");
             }
         }  
     }  
+    //Load in table
     public void getMenu(JTable table,String date){
           new MenuDAO().getMenu(table, date);
     }

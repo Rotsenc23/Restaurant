@@ -24,7 +24,7 @@ public void savePlato(String nombre,String receta, Integer menuId) {
             ps.setInt(3, menuId);
             
             if (ps.executeUpdate() > 0) {
-                System.out.println("Se guardo");
+                System.out.println("PLATO GUARDADO");
             }
 
         } catch (SQLException ex) {

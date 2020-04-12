@@ -30,7 +30,7 @@ public class CategoriaDAO {
             ps.setInt(2, menuId);
             
             if (ps.executeUpdate() > 0) {
-                System.out.println("Se guardo");
+                System.out.println("CATEGORIA GUARDADA");
             }
 
         } catch (SQLException ex) {
