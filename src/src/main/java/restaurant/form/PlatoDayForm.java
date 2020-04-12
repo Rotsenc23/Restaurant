@@ -20,7 +20,7 @@ public class PlatoDayForm extends javax.swing.JFrame {
 
        
 
-        setTitle("Restaurante Nestor");
+        setTitle("RESTAURANTE NESTOR");
         setLayout(null);
         setSize(500, 600);
         setLocationRelativeTo(null);

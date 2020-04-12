@@ -30,6 +30,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         jrbConsultarMenu = new javax.swing.JRadioButton();
+        jrbVentas = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,9 @@ public class MainMenuForm extends javax.swing.JFrame {
         buttonGroup1.add(jrbConsultarMenu);
         jrbConsultarMenu.setText("CONSULTAR MENU DEL DIA");
 
+        buttonGroup1.add(jrbVentas);
+        jrbVentas.setText("VENTAS");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -71,13 +75,14 @@ public class MainMenuForm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jrbAgregarMenu)
-                            .addComponent(jrbConsultarMenu)))
+                            .addComponent(jrbConsultarMenu)
+                            .addComponent(jrbVentas)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
+                        .addGap(173, 173, 173)
                         .addComponent(btnAccept)
                         .addGap(80, 80, 80)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,11 +93,13 @@ public class MainMenuForm extends javax.swing.JFrame {
                 .addComponent(jrbAgregarMenu)
                 .addGap(18, 18, 18)
                 .addComponent(jrbConsultarMenu)
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
+                .addComponent(jrbVentas)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAccept)
                     .addComponent(btnExit))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,6 +138,12 @@ public class MainMenuForm extends javax.swing.JFrame {
         consultar.setVisible(true);
         dispose();
         }
+        
+        if(jrbVentas.isSelected()){
+            VentasDayForm ventas = new VentasDayForm();
+            ventas.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void jrbAgregarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAgregarMenuActionPerformed
@@ -160,5 +173,6 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jrbAgregarMenu;
     private javax.swing.JRadioButton jrbConsultarMenu;
+    private javax.swing.JRadioButton jrbVentas;
     // End of variables declaration//GEN-END:variables
 }
