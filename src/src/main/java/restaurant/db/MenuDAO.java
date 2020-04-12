@@ -69,7 +69,7 @@ public void saveMenu(String date, String description, Double precio, Integer tie
         PreparedStatement ps;
         try {
 
-            String query = "select m.FECHA, m.DESCRIPCION, m.PRECIO,m.TIEMPO_ESPERA,p.NOMBRE,p.RECETA,c.DESCRIPCION "
+            String query = "select m.ID, m.FECHA, m.DESCRIPCION, m.PRECIO,m.TIEMPO_ESPERA,p.NOMBRE,p.RECETA,c.DESCRIPCION "
                     + " from menu m inner join plato p on m.id = p.menu_id inner join categoria c on p.id  = c.plato_id"
                     + " where m.fecha = ?";
 
@@ -81,13 +81,14 @@ public void saveMenu(String date, String description, Double precio, Integer tie
 
             Object[] row;
             while (rs.next()) {
-                row = new Object[6];
-                row[0] = rs.getDate(1);
-                row[1] = rs.getString(2);
-                row[2] = rs.getDouble(3);
-                row[3] = rs.getInt(4);
-                row[4] = rs.getString(5);
+                row = new Object[7];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getDate(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getDouble(4);
+                row[4] = rs.getInt(5);
                 row[5] = rs.getString(6);
+                row[6] = rs.getString(7);
                model.addRow(row);
             }
 

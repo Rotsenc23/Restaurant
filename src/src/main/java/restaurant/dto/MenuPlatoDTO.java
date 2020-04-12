@@ -3,6 +3,7 @@ package src.main.java.restaurant.dto;
 public class MenuPlatoDTO {
 
     //INFORMACION MENU  
+    private Integer idMenu;
     private String fechaMenu;
     private String descripcionMenu;
     private Double precio;
@@ -15,6 +16,14 @@ public class MenuPlatoDTO {
     //INFORMACION CATEGORIA
     private String categoria;
 
+    public Integer getIdMenu() {
+        return idMenu;
+    }
+
+    public void setIdMenu(Integer idMenu) {
+        this.idMenu = idMenu;
+    }
+    
     public Integer getTiempoEspera() {
         return tiempoEspera;
     }
