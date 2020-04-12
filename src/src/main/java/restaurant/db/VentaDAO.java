@@ -61,7 +61,7 @@ public  class VentaDAO {
                            "inner join plato p on m.id = p.menu_id " +
                            "inner join venta v on m.id = v.menu_id " +
                            "where  m.FECHA BETWEEN ? AND ? " +
-                           "ORDER BY M.TIEMPO_ESPERA, M.PRECIO ASC";
+                           "ORDER BY M.TIEMPO_ESPERA, M.PRECIO ASC limit 500";
 
             ps = con.prepareStatement(query);
             DefaultTableModel model = (DefaultTableModel)table.getModel();

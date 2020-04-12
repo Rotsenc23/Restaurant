@@ -6,6 +6,7 @@
 package src.main.java.restaurant.form;
 
 import java.util.Calendar;
+import src.main.java.restaurant.bo.VentaBO;
 
 /**
  *
@@ -132,7 +133,7 @@ public class ReporteVentas extends javax.swing.JFrame {
 
     private void bntConsultRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntConsultRepActionPerformed
         
-         String diaInicial = Integer.toString(jdcInicial.getCalendar().get(Calendar.DAY_OF_MONTH));
+        String diaInicial = Integer.toString(jdcInicial.getCalendar().get(Calendar.DAY_OF_MONTH));
         String mesInicial = Integer.toString(jdcInicial.getCalendar().get(Calendar.MONTH));
         String yearInicial = Integer.toString(jdcInicial.getCalendar().get(Calendar.YEAR));
         String fechaInicial = (yearInicial + "-" + mesInicial + "-" + diaInicial);
@@ -141,8 +142,7 @@ public class ReporteVentas extends javax.swing.JFrame {
         String mesFinal = Integer.toString(jdcFinal.getCalendar().get(Calendar.MONTH));
         String yearFinal = Integer.toString(jdcFinal.getCalendar().get(Calendar.YEAR));
         String fechaFinal = (yearFinal + "-" + mesFinal + "-" + diaFinal);
-         
-      
+        new VentaBO().getVentasOrderByTiempoEsperaPrecio(jTableReporteVenta, fechaInicial, fechaFinal);
     }//GEN-LAST:event_bntConsultRepActionPerformed
 
     /**
