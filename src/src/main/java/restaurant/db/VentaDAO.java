@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public  class VentaDAO {
     
-    public void saveVenta(String fecha, Double monto, Integer valoracion, Integer menuId) {
+    public void saveVenta(Double monto, Integer valoracion, Integer menuId) {
 
         Connection con = MyConnection.getConnection();
 
@@ -26,9 +26,9 @@ public  class VentaDAO {
         try {       
             ps = con.prepareStatement("INSERT INTO VENTA (FECHA,MONTO,VALORACION,MENU_ID) VALUES (?,?,?,?)");
 
-            ps.setDate(1, java.sql.Date.valueOf(fecha));
+            ps.setTimestamp(1, VentaDAO.getCurrentTimeStamp());
             ps.setDouble(2,monto );
-            ps.setInt(3, valoracion);
+            ps.setInt(3, (valoracion!=null)?valoracion:0);
             ps.setInt(4, menuId);
             
             if (ps.executeUpdate() > 0) {
@@ -42,4 +42,9 @@ public  class VentaDAO {
 
     }
     
+    
+    private static java.sql.Timestamp getCurrentTimeStamp() {
+    java.util.Date today = new java.util.Date();
+    return new java.sql.Timestamp(today.getTime());
+}
 }

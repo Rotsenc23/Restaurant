@@ -19,7 +19,7 @@ public class VentaBO {
       VentaDAO ventasDao = new VentaDAO();
         if(ventaList!=null){
                 for (VentaDTO venta : ventaList) {
-                     ventasDao.saveVenta(venta.getFecha(), venta.getMonto(), venta.getValoracion(), venta.getIdMenu()); 
+                     ventasDao.saveVenta(venta.getMonto(), venta.getValoracion(), venta.getIdMenu()); 
                 }
           
         }     

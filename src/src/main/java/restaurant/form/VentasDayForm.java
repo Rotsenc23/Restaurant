@@ -1,22 +1,41 @@
-
 package src.main.java.restaurant.form;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import src.main.java.restaurant.bo.MenuDayBO;
+import src.main.java.restaurant.bo.VentaBO;
+import src.main.java.restaurant.dto.MenuPlatoDTO;
+import src.main.java.restaurant.dto.VentaDTO;
+import static src.main.java.restaurant.form.MenuFinal.jTableModificarMenuDia;
 
 public class VentasDayForm extends javax.swing.JFrame {
+
+    private Vector vector;
+    private Map<String, Integer> ventaMap;
 
     /**
      * Creates new form VentasDayForm
      */
     public VentasDayForm() {
         initComponents();
-        
+
         String mensaje;
-        
+
         setTitle("RESTAURANTE NESTOR");
         setLayout(null);
-        setSize(700, 600);
+        setSize(850, 680);
         setLocationRelativeTo(null);
     }
 
@@ -38,6 +57,9 @@ public class VentasDayForm extends javax.swing.JFrame {
         jTextConsultFecha = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jcbValoracion = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,11 +75,17 @@ public class VentasDayForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOMBRE", "CATEGORIA", "PRECIO", "TIEMPO DE ESPERA", "RECETA"
+                "ID", "FECHA", "MENU", "PRECIO", "TIEMPO DE ESPERA", "PLATO", "RECETA", "CATEGORIA"
             }
         ));
+        jTableVentaMenuDia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTableVentaMenuDia.getTableHeader().setResizingAllowed(false);
         jTableVentaMenuDia.getTableHeader().setReorderingAllowed(false);
+        jTableVentaMenuDia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTableVentaMenuDiaMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableVentaMenuDia);
 
         btnVender.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -76,6 +104,17 @@ public class VentasDayForm extends javax.swing.JFrame {
         jLabel1.setText("VALORACION / VENTA");
 
         jcbValoracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jcbValoracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbValoracionActionPerformed(evt);
+            }
+        });
+
+        jList1.setVisibleRowCount(10);
+        jScrollPane2.setViewportView(jList1);
+        jList1.getAccessibleContext().setAccessibleName("");
+
+        jLabel2.setText("items venta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,74 +125,150 @@ public class VentasDayForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(149, 149, 149)
                                 .addComponent(jDChFechaVent, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bntConsultaVent)
                                 .addGap(38, 38, 38)
-                                .addComponent(jTextConsultFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextConsultFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jcbValoracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnVender, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                                    .addComponent(jcbValoracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE))
-                .addContainerGap())
+                                .addGap(108, 108, 108)
+                                .addComponent(jLabel2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(188, 188, 188))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(236, 236, 236)
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bntConsultaVent)
-                        .addComponent(jTextConsultFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextConsultFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntConsultaVent)
                     .addComponent(jDChFechaVent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jcbValoracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jcbValoracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btnVender)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnExit)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntConsultaVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntConsultaVentActionPerformed
-        
+
         String dia = Integer.toString(jDChFechaVent.getCalendar().get(Calendar.DAY_OF_MONTH));
         String mes = Integer.toString(jDChFechaVent.getCalendar().get(Calendar.MONTH));
         String year = Integer.toString(jDChFechaVent.getCalendar().get(Calendar.YEAR));
         String fecha = (year + "-" + mes + "-" + dia);
-        jTextConsultFecha.setText(fecha); 
+        jTextConsultFecha.setText(fecha);
+        new MenuDayBO().getMenu(jTableVentaMenuDia, fecha);
+        vector = new Vector();
     }//GEN-LAST:event_bntConsultaVentActionPerformed
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-      
-      int mensaje = JOptionPane.showConfirmDialog(null, "DESEA REALIZAR VENTA?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-      
-      if(mensaje ==JOptionPane.YES_OPTION){
-        MainMenuForm venta = new MainMenuForm();
-        venta.setVisible(true);
-        dispose();
-      }
-      
-          
-      
-      
 
-        
+        int mensaje = JOptionPane.showConfirmDialog(null, "DESEA REALIZAR VENTA?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (mensaje == JOptionPane.YES_OPTION) {
+            MainMenuForm venta = new MainMenuForm();
+            venta.setVisible(true);
+            List<VentaDTO> ventaList = new ArrayList();
+            for (int i = 0; i < vector.size(); i++) {
+                Vector vectors = (Vector) vector.get(i);
+                VentaDTO ventaDTO = new VentaDTO();
+                ventaDTO.setValoracion(Integer.parseInt(jcbValoracion.getSelectedItem().toString()));
+                for (int x = 0; x <= vectors.size(); x++) {
+                    switch (x) {
+                        case 0:
+                            ventaDTO.setIdMenu((Integer) vectors.elementAt(x));
+                            break;
+                        case 3:
+                            ventaDTO.setMonto((Double) vectors.elementAt(x));
+                            break;
+                        default:
+
+                    }
+                }
+                ventaList.add(ventaDTO);
+            }
+           new VentaBO().saveVenta(ventaList);
+           dispose();
+        }
+
+
     }//GEN-LAST:event_btnVenderActionPerformed
+
+    private void jTableVentaMenuDiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableVentaMenuDiaMousePressed
+        DefaultTableModel tablaplato = (DefaultTableModel) VentasDayForm.jTableVentaMenuDia.getModel();
+        vector.add(tablaplato.getDataVector().elementAt(jTableVentaMenuDia.getSelectedRow()));
+        this.showItems();
+    }//GEN-LAST:event_jTableVentaMenuDiaMousePressed
+
+    private void jcbValoracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbValoracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbValoracionActionPerformed
+
+    private void showItems() {
+        DefaultTableModel tablaplato = (DefaultTableModel) VentasDayForm.jTableVentaMenuDia.getModel();
+        List<VentaDTO> ventaList = new ArrayList();
+        for (int i = 0; i < vector.size(); i++) {
+            Vector vectors = (Vector) vector.get(i);
+            VentaDTO ventaDTO = new VentaDTO();
+            for (int x = 0; x <= vectors.size(); x++) {
+                switch (x) {
+                    case 0:
+                        ventaDTO.setIdMenu((Integer) vectors.elementAt(x));
+                        break;
+                    case 5:
+                        ventaDTO.setNombrePlato((String) vectors.elementAt(x));
+                        break;
+                    default:
+
+                }
+            }
+            ventaList.add(ventaDTO);
+        }
+        DefaultListModel modelo = new DefaultListModel();
+        for (VentaDTO ventas : ventaList) {
+            modelo.addElement(ventas.getNombrePlato());
+        }
+        jList1.setModel(modelo);
+    }
 
     /**
      * @param args the command line arguments
@@ -196,7 +311,10 @@ public class VentasDayForm extends javax.swing.JFrame {
     private javax.swing.JButton btnVender;
     private com.toedter.calendar.JDateChooser jDChFechaVent;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JTable jTableVentaMenuDia;
     private javax.swing.JLabel jTextConsultFecha;
     private javax.swing.JComboBox<String> jcbValoracion;

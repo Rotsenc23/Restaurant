@@ -81,7 +81,7 @@ public void saveMenu(String date, String description, Double precio, Integer tie
 
             Object[] row;
             while (rs.next()) {
-                row = new Object[7];
+                row = new Object[8];
                 row[0] = rs.getInt(1);
                 row[1] = rs.getDate(2);
                 row[2] = rs.getString(3);
@@ -89,6 +89,7 @@ public void saveMenu(String date, String description, Double precio, Integer tie
                 row[4] = rs.getInt(5);
                 row[5] = rs.getString(6);
                 row[6] = rs.getString(7);
+                row[7] = rs.getString(8);
                model.addRow(row);
             }
 
