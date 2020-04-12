@@ -10,7 +10,7 @@ public class MyConnection {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "admin");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restore_restaurant", "root", "admin");
 
         } catch (Exception ex) {
             System.out.println("No se pudo conectar a la base de datos:  "+ex.getMessage());

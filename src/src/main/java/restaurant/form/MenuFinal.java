@@ -73,7 +73,7 @@ public class MenuFinal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOMBRE", "CATEGORIA", "PRECIO", "TIEMPO DE ESPERA", "RECETA"
+                "ID", "FECHA", "MENU", "PRECIO", "TIEMPO DE ESPERA", "PLATO"
             }
         ));
         jTableModificarMenuDia.getTableHeader().setResizingAllowed(false);
